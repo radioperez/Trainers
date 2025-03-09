@@ -25,52 +25,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TrainersTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    StartScreen(
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                HistoryScreen()
             }
         }
-    }
-}
-
-@Composable
-fun StartScreen(modifier: Modifier = Modifier) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally,
-           verticalArrangement = Arrangement.SpaceEvenly) {
-        Row(verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.End) {
-            Text("settings", modifier = modifier)
-        }
-        Text("stats", modifier = modifier)
-        Text("history", modifier = modifier)
-        Sheet(modifier)
-    }
-}
-
-@Composable
-fun Sheet(modifier: Modifier = Modifier) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(
-            text = "Начать свободную тренировку",
-            modifier = modifier
-        )
-        Text(
-            text = "Начать шаблон 1",
-            modifier = modifier
-        )
-        Text(
-            text = "Редактор шаблонов",
-            modifier = modifier
-        )
-    }
-}
-
-@Preview
-@Composable
-fun StartScreenPreview() {
-    TrainersTheme {
-        StartScreen()
     }
 }
