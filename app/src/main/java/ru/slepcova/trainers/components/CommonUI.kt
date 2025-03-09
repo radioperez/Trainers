@@ -16,11 +16,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import ru.slepcova.trainers.R
 
 @Composable
 fun ExerciseCard(exercise: String, modifier: Modifier = Modifier) {
-    Column {
+    Column() {
         Text(exercise)
         ExerciseLine()
         ExerciseLine()
@@ -53,17 +52,16 @@ fun ExerciseLine() {
     }
 }
 
-
 @Composable
-fun TrainingCard(modifier: Modifier = Modifier) {
+fun TrainingCard(date: String, name: String, modifier: Modifier = Modifier) {
     Row {
         Icon(
             Icons.Rounded.ShoppingCart,
             contentDescription = "Lol"
         )
         Column {
-            Text("Date")
-            Text("Training Name")
+            Text(date)
+            Text(name)
         }
     }
 }

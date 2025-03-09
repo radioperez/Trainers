@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import ru.slepcova.trainers.ui.theme.TrainersTheme
+import ru.slepcova.trainers.components.TrainingCard
 
 @Composable
 fun HistoryScreen(
@@ -21,8 +22,8 @@ fun HistoryScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text("Stats")
-        Text("Training 8")
-        Text("Training 2")
+        TrainingCard("Dec 10", "Training")
+        TrainingCard("March 2", "Running")
     }
 }
 
