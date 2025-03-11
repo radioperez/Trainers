@@ -53,13 +53,13 @@ fun StartScreen(modifier: Modifier = Modifier) {
                         Icon(
                             imageVector = Icons.Filled.Settings,
                             contentDescription = "Settings",
-                            modifier = modifier.fillMaxSize()
+                            modifier = Modifier.fillMaxSize()
                         )
                     }
                 }
         )
         Column(
-            modifier = modifier.padding(16.dp),
+            modifier = Modifier.padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
@@ -69,7 +69,7 @@ fun StartScreen(modifier: Modifier = Modifier) {
         }
         Card() {
             Column(
-                modifier = modifier.padding(8.dp).fillMaxHeight(),
+                modifier = Modifier.padding(8.dp).fillMaxHeight(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Top
             ) {
@@ -77,7 +77,7 @@ fun StartScreen(modifier: Modifier = Modifier) {
                 Button(
                     shape = RoundedCornerShape(10.dp),
                     onClick = {},
-                    modifier = modifier.padding(8.dp)
+                    modifier = Modifier.padding(8.dp)
                         .fillMaxWidth()
                 ) {
                     Text("Начать свободную тренировку".uppercase(),
@@ -88,7 +88,7 @@ fun StartScreen(modifier: Modifier = Modifier) {
                 Button(
                     shape = RoundedCornerShape(10.dp),
                     onClick = {},
-                    modifier = modifier.padding(8.dp)
+                    modifier = Modifier.padding(8.dp)
                         .fillMaxWidth()
                 ) {
                     Text("Начать шаблон 1".uppercase(),
@@ -99,7 +99,7 @@ fun StartScreen(modifier: Modifier = Modifier) {
                 Button(
                     shape = RoundedCornerShape(10.dp),
                     onClick = {},
-                    modifier = modifier.padding(8.dp)
+                    modifier = Modifier.padding(8.dp)
                         .fillMaxWidth()
                 ) {
                     Text("Редактор шаблонов".uppercase(),
