@@ -5,6 +5,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +19,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -28,28 +30,24 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.slepcova.trainersapp.ui.theme.TrainersAppTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StartScreen(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        TopAppBar(
-            title = { },
-            actions = {
-                IconButton(
-                    onClick = {}
-                ) {
-                    Icon(
-                        imageVector = Icons.Filled.Settings,
-                        contentDescription = "Settings",
-                        modifier = Modifier.fillMaxSize()
-                    )
-                }
-            },
-            modifier = Modifier.height(32.dp)
-        )
+        Row(
+            modifier = Modifier.height(48.dp),
+            horizontalArrangement = Arrangement.End
+        ) {
+            Spacer(Modifier.fillMaxWidth(0.90f))
+            Icon(
+                imageVector = Icons.Filled.Settings,
+                contentDescription = "Settings",
+                modifier = Modifier.size(64.dp)
+            )
+        }
         Column(
             modifier = modifier.padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -115,6 +113,9 @@ fun StartScreen(modifier: Modifier = Modifier) {
 @Composable
 fun StartScreenPreview() {
     TrainersAppTheme {
-        StartScreen()
+        Scaffold()
+        { innerPadding ->
+            StartScreen(modifier = Modifier.padding(innerPadding))
+        }
     }
 }
