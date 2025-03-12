@@ -29,7 +29,13 @@ import ru.slepcova.trainersapp.ui.theme.TrainersAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StartScreen(modifier: Modifier = Modifier) {
+fun StartScreen(
+    toHistory: () -> Unit,
+    toSummary: () -> Unit,
+    toFreestyle: () -> Unit,
+    toTemplate: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -41,9 +47,17 @@ fun StartScreen(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
-            StatsCard()
+            StatsCard(
+                onClick = {
+                    toHistory()
+                }
+            )
             Spacer(Modifier.size(16.dp))
-            ExerciseRow()
+            ExerciseRow(
+                onClick = {
+                    toSummary()
+                }
+            )
         }
         Card {
             Column(
@@ -54,7 +68,9 @@ fun StartScreen(modifier: Modifier = Modifier) {
                 Spacer(Modifier.size(8.dp))
                 Button(
                     shape = RoundedCornerShape(10.dp),
-                    onClick = {},
+                    onClick = {
+                        toFreestyle()
+                    },
                     modifier = Modifier.padding(8.dp)
                         .fillMaxWidth()
                 ) {
@@ -65,7 +81,9 @@ fun StartScreen(modifier: Modifier = Modifier) {
                 }
                 Button(
                     shape = RoundedCornerShape(10.dp),
-                    onClick = {},
+                    onClick = {
+                        toTemplate()
+                    },
                     modifier = Modifier.padding(8.dp)
                         .fillMaxWidth()
                 ) {
@@ -96,7 +114,13 @@ fun StartScreenPreview() {
     TrainersAppTheme {
         Scaffold()
         { innerPadding ->
-            StartScreen(modifier = Modifier.padding(innerPadding))
+            StartScreen(
+                toHistory = {},
+                toSummary = {},
+                toFreestyle = {},
+                toTemplate = {},
+                modifier = Modifier.padding(innerPadding)
+            )
         }
     }
 }

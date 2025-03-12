@@ -14,7 +14,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun HistoryScreen(modifier: Modifier = Modifier) {
+fun HistoryScreen(
+    toSummary: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -31,7 +34,11 @@ fun HistoryScreen(modifier: Modifier = Modifier) {
             }
             items(16) { _ ->
                 Spacer(Modifier.size(16.dp))
-                ExerciseRow()
+                ExerciseRow(
+                    onClick = {
+                        toSummary()
+                    }
+                )
             }
         }
     }
@@ -41,6 +48,9 @@ fun HistoryScreen(modifier: Modifier = Modifier) {
 @Composable
 fun HistoryScreenPreview() {
     Scaffold { innerPadding ->
-        HistoryScreen( modifier = Modifier.padding(innerPadding))
+        HistoryScreen(
+            toSummary = {},
+            modifier = Modifier.padding(innerPadding)
+        )
     }
 }

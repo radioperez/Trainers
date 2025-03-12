@@ -1,6 +1,7 @@
 package ru.slepcova.trainersapp
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Icon
@@ -36,10 +37,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-@Preview
 @Composable
-fun ExerciseRow() {
-    Card {
+fun ExerciseRow(onClick: () -> Unit) {
+    Card(
+        modifier = Modifier.clickable {
+            onClick()
+        }
+    ) {
         Row(
             modifier = Modifier.fillMaxWidth()
                 .padding(8.dp),
@@ -57,6 +61,11 @@ fun ExerciseRow() {
             }
         }
     }
+}
+@Preview
+@Composable
+fun ExerciseRowPreview() {
+    ExerciseRow(onClick = {})
 }
 
 @Preview
@@ -105,11 +114,14 @@ fun RepSetLine() {
     }
 }
 
-@Preview
 @Composable
-fun StatsCard() {
+fun StatsCard(onClick: () -> Unit) {
     val currentProgress = 0.6f
-    Card {
+    Card(
+        modifier = Modifier.clickable {
+            onClick()
+        }
+    ) {
         Text(
             text = "На этой неделе Вы тренировались на 45 мин больше последней!",
             fontSize = 24.sp,
@@ -139,6 +151,12 @@ fun StatsCard() {
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun StatsCardPreview() {
+    StatsCard(onClick = {})
 }
 
 @Preview
