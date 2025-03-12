@@ -19,22 +19,24 @@ import androidx.compose.ui.unit.sp
 import ru.slepcova.trainersapp.ui.theme.TrainersAppTheme
 
 @Composable
-fun TrainingSummaryScreen(modifier: Modifier = Modifier) {
+fun TrainingSummaryScreen(
+    modifier: Modifier = Modifier,
+    name: String = "Training Title",
+    date: String = "22 february, 12:34",
+) {
     LazyColumn(
         modifier = modifier.padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
-        item { Row {
-            Text("22 февраля, ",
-                fontSize = 40.sp,
-                fontWeight = FontWeight.Bold)
-            Text("12:34",
-                fontSize = 40.sp)
-        } }
+        item {
+            Text(date,
+                fontSize = 40.sp
+            )
+        }
         item {
             Spacer(Modifier.size(16.dp))
-            Text("Training Title",
+            Text(name,
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Black)
         }

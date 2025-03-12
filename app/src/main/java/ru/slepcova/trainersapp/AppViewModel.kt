@@ -10,12 +10,12 @@ class AppViewModel: ViewModel() {
     private val _uiState = MutableStateFlow(AppUIState())
     val uiState: StateFlow<AppUIState> = _uiState.asStateFlow()
 
-    private fun getLastTraining(): Pair<String, String> {
+    private fun getTraining(): Pair<String, String> {
         return exercises.random()
     }
 
-    fun resetApp() {
-        _uiState.value = AppUIState(lastTraining = Pair("Freestyle", "Today"))
+    private fun resetApp() {
+        _uiState.value = AppUIState(lastTraining = getTraining())
     }
 
     init {

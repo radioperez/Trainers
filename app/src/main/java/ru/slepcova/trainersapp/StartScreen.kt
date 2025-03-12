@@ -31,7 +31,7 @@ import ru.slepcova.trainersapp.ui.theme.TrainersAppTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StartScreen(
-    lastTraining: Pair<String, String>,
+    lastTraining: Pair<String, String> = Pair("Freestyle", "Today"),
     toHistory: () -> Unit,
     toSummary: () -> Unit,
     toFreestyle: () -> Unit,
@@ -119,7 +119,6 @@ fun StartScreenPreview() {
         Scaffold()
         { innerPadding ->
             StartScreen(
-                lastTraining = Pair("Freestyle", "Today"),
                 toHistory = {},
                 toSummary = {},
                 toFreestyle = {},
