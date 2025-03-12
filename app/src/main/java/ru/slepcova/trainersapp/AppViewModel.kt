@@ -1,15 +1,21 @@
 package ru.slepcova.trainersapp
 
-class AppViewModel: ViewModel {
-    private val _uiState = MutableStateFlow(AppUiState())
-    val uiState: StateFlow<AppUiState> = _uiState.asStateFlow
+import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import ru.slepcova.trainersapp.data.exercises
 
-    private fun getLastTraining() {
-        return "Yesterday"
+class AppViewModel: ViewModel() {
+    private val _uiState = MutableStateFlow(AppUIState())
+    val uiState: StateFlow<AppUIState> = _uiState.asStateFlow()
+
+    private fun getLastTraining(): Pair<String, String> {
+        return exercises.random()
     }
 
     fun resetApp() {
-        _uiState.value = AppUIState(lastTraining = "Yesterday")
+        _uiState.value = AppUIState(lastTraining = Pair("Freestyle", "Today"))
     }
 
     init {

@@ -7,7 +7,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
@@ -33,7 +36,10 @@ enum class TrainerScreen() {
 }
 
 @Composable
-fun TrainersApp() {
+fun TrainersApp(
+    viewModel: AppViewModel = viewModel()
+) {
+    val uiState by viewModel.uiState.collectAsState()
     TrainersAppTheme {
         Scaffold()
         { innerPadding ->
@@ -45,6 +51,7 @@ fun TrainersApp() {
             ) {
                 composable(route = TrainerScreen.Start.name) {
                     StartScreen(
+                        lastTraining = uiState.lastTraining,
                         toHistory = {
                             navController.navigate(TrainerScreen.History.name)
                         },

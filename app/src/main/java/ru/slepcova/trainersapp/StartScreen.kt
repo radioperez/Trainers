@@ -25,11 +25,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import ru.slepcova.trainersapp.ui.theme.TrainersAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StartScreen(
+    lastTraining: Pair<String, String>,
     toHistory: () -> Unit,
     toSummary: () -> Unit,
     toFreestyle: () -> Unit,
@@ -54,6 +56,8 @@ fun StartScreen(
             )
             Spacer(Modifier.size(16.dp))
             ExerciseRow(
+                name = lastTraining.first,
+                date = lastTraining.second,
                 onClick = {
                     toSummary()
                 }
@@ -115,6 +119,7 @@ fun StartScreenPreview() {
         Scaffold()
         { innerPadding ->
             StartScreen(
+                lastTraining = Pair("Freestyle", "Today"),
                 toHistory = {},
                 toSummary = {},
                 toFreestyle = {},
