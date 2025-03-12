@@ -13,6 +13,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,6 +43,19 @@ fun TrainingFreestyleScreen(modifier: Modifier = Modifier) {
             ExerciseFullCard()
         }
         item {
+            Spacer(Modifier.size(16.dp))
+            TextButton(
+                onClick = {}
+            ) {
+                Text(" + упражнение".uppercase(),
+                    fontSize = 24.sp)
+            }
+            TextButton(
+                onClick = {}
+            ) {
+                Text(" + период отдыха".uppercase(),
+                    fontSize = 24.sp)
+            }
             Spacer(Modifier.size(16.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
