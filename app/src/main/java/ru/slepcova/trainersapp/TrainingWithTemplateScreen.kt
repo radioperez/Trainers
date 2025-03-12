@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.sp
 import ru.slepcova.trainersapp.ui.theme.TrainersAppTheme
 
 @Composable
-fun TrainingFreestyleScreen(modifier: Modifier = Modifier) {
+fun TrainingWithTemplateScreen(modifier: Modifier = Modifier) {
     LazyColumn(
         modifier = modifier.padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -69,10 +69,10 @@ fun TrainingFreestyleScreen(modifier: Modifier = Modifier) {
 
 @Preview
 @Composable
-fun TrainingFreestyleScreenPreview() {
+fun TrainingWithTemplateScreenPreview() {
     TrainersAppTheme {
         Scaffold { innerPadding ->
-            TrainingFreestyleScreen(modifier = Modifier.padding(innerPadding))
+            TrainingWithTemplateScreen(modifier = Modifier.padding(innerPadding))
         }
     }
 }
