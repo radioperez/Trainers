@@ -36,9 +36,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlin.random.Random
+
+fun pickIcon(): Int {
+    return if (Random.nextInt(0,2) == 0) {
+        R.drawable.running
+    }
+    else {
+        R.drawable.weight
+    }
+}
 
 @Composable
-fun ExerciseRow(onClick: () -> Unit) {
+fun ExerciseRow(
+    name: String = "Exercise Type",
+    date: String = "Month Nth, 12:34",
+    onClick: () -> Unit
+) {
     Card(
         modifier = Modifier.clickable {
             onClick()
@@ -50,14 +64,14 @@ fun ExerciseRow(onClick: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                painter = painterResource(R.drawable.running),
+                painter = painterResource(pickIcon()),
                 contentDescription = "Exercise Icon",
                 modifier = Modifier.size(50.dp)
             )
             Spacer(modifier = Modifier.width(8.dp))
             Column {
-                Text("Month Nth, 12:34", fontSize = 20.sp)
-                Text("Exercise Name".uppercase(), fontSize = 24.sp, fontWeight = FontWeight.Bold)
+                Text(date, fontSize = 20.sp)
+                Text(name.uppercase(), fontSize = 24.sp, fontWeight = FontWeight.Bold)
             }
         }
     }
@@ -70,9 +84,11 @@ fun ExerciseRowPreview() {
 
 @Preview
 @Composable
-fun ExerciseFullCard() {
+fun ExerciseFullCard(
+    name: String = "Exercise Type"
+) {
     Card {
-        Text("Exercise Name",
+        Text(name,
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(16.dp))
@@ -164,7 +180,7 @@ fun StatsCardPreview() {
 fun StatsExpanded() {
     val currentProgress = 0.6f
     Card(
-        colors = CardDefaults.cardColors(containerColor = Color(20, 240, 164)),
+        colors = CardDefaults.cardColors(containerColor = Color(10, 200, 130)),
         modifier = Modifier.fillMaxWidth()
     ) {
         Text(
