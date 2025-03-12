@@ -46,7 +46,7 @@ fun ExerciseRow() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                imageVector = Icons.Filled.LocationOn,
+                painter = painterResource(R.drawable.running),
                 contentDescription = "Exercise Icon",
                 modifier = Modifier.size(50.dp)
             )
