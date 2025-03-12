@@ -6,28 +6,34 @@
 
 ## Лаб. 4:
 Реализовано пять экранов приложения
-### 1) StartScreen.kt 
-![images/Start.png](images/Start.png)
+### 1) StartScreen.kt
+<img alt="images/Start.png" height="256" src="images/Start.png"/>
+
 * Карточка статистика, нажатие открывает экран History
 * Последняя тренировка, нажатие открывает экран TrainingSummary тренировки
 * Кнопка "Начать свободную тренировку", нажатие запускает экран TrainingFreestyle
 * Кнопка "Начать тренировку по шаблону", нажатие запускает экран TrainingWithTemplate
 * Кнопка "Редактор шаблонов", пока не функциональна
 
-### 2) HistoryScreen.kt 
-![images/History.png](images/History.png)
-Отображает все сохраненные тренировки внутри LazyColumn
-Нажатие на любую тренировку открывает ее экран TrainingSummary
+### 2) HistoryScreen.kt
+<img alt="images/History.png" height="256" src="images/History.png"/>
+
+* Отображает все сохраненные тренировки внутри LazyColumn
+* Нажатие на любую тренировку открывает ее экран TrainingSummary
 ### 3) TrainingSummary.kt 
-![images/Summary.png](images/Summary.png)
-Отображает детали тренировки внутри LazyColumn
+<img alt="images/Summary.png" height="256" src="images/Summary.png"/>
+
+* Отображает детали тренировки внутри LazyColumn
 ### 4) TrainingFreestyle.kt 
-![images/Freestyle.png](images/Freestyle.png)
+<img alt="images/Freestyle.png" height="256" src="images/Freestyle.png"/>
+
 Режим свободной тренировки. Функционал который будет реализован в дальнейших лабах:
 * Можно добавлять упраженения, менять их названия, количество заходов и выполнений
 * Пауза останавливает таймер
 * Кнопка "завершить" сохраняет тренировку в приложение
-### 5) TrainingWithTemplate.kt ![images/Template.png](images/Template.png)
+### 5) TrainingWithTemplate.kt 
+<img alt="images/Template.png" height="256" src="images/Template.png"/>
+
 Режим тренировки по шаблону. Функционал который будет реализован в дальнейших лабах:
 * Упражнения отображаются согласно шаблону
 * Их можно помечать как выполненные или нет
