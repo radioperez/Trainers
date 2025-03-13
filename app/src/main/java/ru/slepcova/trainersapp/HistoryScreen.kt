@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun HistoryScreen(
-    toSummary: () -> Unit,
+    toSummary: (Pair<String, String>) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -35,8 +35,8 @@ fun HistoryScreen(
             items(16) { _ ->
                 Spacer(Modifier.size(16.dp))
                 ExerciseRow(
-                    onClick = {
-                        toSummary()
+                    onClick = { training ->
+                        toSummary(training)
                     }
                 )
             }

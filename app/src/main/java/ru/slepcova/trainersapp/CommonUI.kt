@@ -51,11 +51,11 @@ fun pickIcon(): Int {
 fun ExerciseRow(
     name: String = "Exercise Type",
     date: String = "Month Nth, 12:34",
-    onClick: () -> Unit
+    onClick: (Pair<String,String>) -> Unit
 ) {
     Card(
         modifier = Modifier.clickable {
-            onClick()
+            onClick(Pair(name, date))
         }
     ) {
         Row(

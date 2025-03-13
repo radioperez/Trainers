@@ -33,7 +33,7 @@ import ru.slepcova.trainersapp.ui.theme.TrainersAppTheme
 fun StartScreen(
     lastTraining: Pair<String, String> = Pair("Freestyle", "Today"),
     toHistory: () -> Unit,
-    toSummary: () -> Unit,
+    toSummary: (Pair<String, String>) -> Unit,
     toFreestyle: () -> Unit,
     toTemplate: () -> Unit,
     modifier: Modifier = Modifier
@@ -58,8 +58,8 @@ fun StartScreen(
             ExerciseRow(
                 name = lastTraining.first,
                 date = lastTraining.second,
-                onClick = {
-                    toSummary()
+                onClick = { training ->
+                    toSummary(training)
                 }
             )
         }

@@ -55,7 +55,8 @@ fun TrainersApp(
                         toHistory = {
                             navController.navigate(TrainerScreen.History.name)
                         },
-                        toSummary = {
+                        toSummary = { training ->
+                            viewModel.setOpenedTraining(training)
                             navController.navigate(TrainerScreen.TrainingSummary.name)
                         },
                         toFreestyle = {
@@ -68,7 +69,8 @@ fun TrainersApp(
                 }
                 composable(route = TrainerScreen.History.name) {
                     HistoryScreen(
-                        toSummary = {
+                        toSummary = { training ->
+                            viewModel.setOpenedTraining(training)
                             navController.navigate(TrainerScreen.TrainingSummary.name)
                         }
                     )
@@ -80,7 +82,10 @@ fun TrainersApp(
                     TrainingWithTemplateScreen()
                 }
                 composable(route = TrainerScreen.TrainingSummary.name) {
-                    TrainingSummaryScreen()
+                    TrainingSummaryScreen(
+                        name = uiState.openedTraining.first,
+                        date = uiState.openedTraining.second
+                    )
                 }
             }
         }
