@@ -1,25 +1,26 @@
 package ru.slepcova.trainersapp
 
-import androidx.compose.runtime.MutableState
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import ru.slepcova.trainersapp.data.exercises
+import kotlinx.coroutines.runBlocking
+import ru.slepcova.trainersapp.data.Repository
+import ru.slepcova.trainersapp.data.Training
 
 class AppViewModel: ViewModel() {
     private val _uiState = MutableStateFlow(AppUIState())
     val uiState: StateFlow<AppUIState> = _uiState.asStateFlow()
 
-    private fun getLastTraining(): Pair<String,String> {
+    private val repo by lazy { Repository() }
+    val allTraining: List<Training> = runBlocking { repo.load() }
+
+    private fun getLastTraining(): Training {
         // TODO логику поиска самого недавнего
-        return exercises.random()
+        return allTraining[0]
     }
 
-    fun setOpenedTraining(to: Pair<String, String>) {
+    fun setOpenedTraining(to: Training) {
         _uiState.value = AppUIState(
             openedTraining = to,
             lastTraining = getLastTraining()

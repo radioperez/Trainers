@@ -1,9 +1,27 @@
 package ru.slepcova.trainersapp.data
 
-val exercises: Set<Pair<String, String>> =
-    setOf(
-        Pair("Template 1", "Feb 22, 11:04"),
-        Pair("Freestyle", "Feb 23, 12:23"),
-        Pair("Freestyle", "Feb 24, 9:55"),
-        Pair("Template 2", "Feb 25, 23:23")
-    )
+val trainingNames: Set<String> = setOf(
+    "Freestyle",
+    "Running",
+    "Template 2",
+    "Awesome Custom Name"
+)
+
+val exerciseNames: Set<String> = setOf(
+    "Situps",
+    "Pullups",
+    "Deadlifts",
+    "Sprints",
+    "Jogging by km",
+    "Jumping Jacks",
+    "Анжуманя",
+    "Пресс качат"
+)
+
+val months: Set<String> = setOf(
+    "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"
+)
+
+fun generateDate(): String {
+    return (1..25).random().toString() + " " + months.random()
+}

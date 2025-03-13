@@ -12,10 +12,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import ru.slepcova.trainersapp.data.Training
 
 @Composable
 fun HistoryScreen(
-    toSummary: (Pair<String, String>) -> Unit,
+    trainingList: List<Training>,
+    toSummary: (Training) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -32,13 +34,16 @@ fun HistoryScreen(
             item {
                 StatsExpanded()
             }
-            items(16) { _ ->
-                Spacer(Modifier.size(16.dp))
-                ExerciseRow(
-                    onClick = { training ->
-                        toSummary(training)
-                    }
-                )
+            trainingList.forEach { it ->
+                item {
+                    Spacer(Modifier.size(16.dp))
+                    ExerciseRow(
+                        training = it,
+                        onClick = { training ->
+                            toSummary(training)
+                        }
+                    )
+                }
             }
         }
     }
@@ -49,6 +54,7 @@ fun HistoryScreen(
 fun HistoryScreenPreview() {
     Scaffold { innerPadding ->
         HistoryScreen(
+            trainingList = emptyList(),
             toSummary = {},
             modifier = Modifier.padding(innerPadding)
         )

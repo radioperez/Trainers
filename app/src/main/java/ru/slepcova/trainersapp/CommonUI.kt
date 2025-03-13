@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -36,6 +35,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ru.slepcova.trainersapp.data.Exercise
+import ru.slepcova.trainersapp.data.Training
 import kotlin.random.Random
 
 fun pickIcon(): Int {
@@ -49,13 +50,12 @@ fun pickIcon(): Int {
 
 @Composable
 fun ExerciseRow(
-    name: String = "Exercise Type",
-    date: String = "Month Nth, 12:34",
-    onClick: (Pair<String,String>) -> Unit
+    training: Training = Training("Filler Date", "Filler Name"),
+    onClick: (Training) -> Unit
 ) {
     Card(
         modifier = Modifier.clickable {
-            onClick(Pair(name, date))
+            onClick(training)
         }
     ) {
         Row(
@@ -70,8 +70,8 @@ fun ExerciseRow(
             )
             Spacer(modifier = Modifier.width(8.dp))
             Column {
-                Text(date, fontSize = 20.sp)
-                Text(name.uppercase(), fontSize = 24.sp, fontWeight = FontWeight.Bold)
+                Text(training.date, fontSize = 20.sp)
+                Text(training.name.uppercase(), fontSize = 24.sp, fontWeight = FontWeight.Bold)
             }
         }
     }
@@ -85,23 +85,26 @@ fun ExerciseRowPreview() {
 @Preview
 @Composable
 fun ExerciseFullCard(
+    exercise: Exercise = Exercise("Filler Exercise"),
     name: String = "Exercise Type"
 ) {
     Card {
-        Text(name,
+        Text(exercise.name,
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(16.dp))
-        RepSetLine()
-        RepSetLine()
-        RepSetLine()
+        exercise.setsReps?.forEach {
+            RepSetLine(it)
+        }
     }
 }
 
 @Composable
-fun RepSetLine() {
-    val sets = 3
-    val reps = 12
+fun RepSetLine(
+    setRep: Pair<Int, Int>
+) {
+    val sets = setRep.first
+    val reps = setRep.second
     Row(verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.fillMaxWidth()
             .padding(16.dp)) {

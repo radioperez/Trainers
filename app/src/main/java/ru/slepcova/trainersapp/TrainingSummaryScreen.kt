@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,13 +17,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ru.slepcova.trainersapp.data.Training
 import ru.slepcova.trainersapp.ui.theme.TrainersAppTheme
 
 @Composable
 fun TrainingSummaryScreen(
+    training: Training,
     modifier: Modifier = Modifier,
-    name: String = "Training Title",
-    date: String = "22 february, 12:34",
 ) {
     LazyColumn(
         modifier = modifier.padding(16.dp),
@@ -30,19 +31,19 @@ fun TrainingSummaryScreen(
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
         item {
-            Text(date,
+            Text(training.date,
                 fontSize = 40.sp
             )
-        }
-        item {
             Spacer(Modifier.size(16.dp))
-            Text(name,
+            Text(training.name,
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Black)
         }
-        items(1) { _ ->
-            Spacer(Modifier.size(16.dp))
-            ExerciseFullCard()
+        training.exercises?.forEach { it ->
+            item {
+                Spacer(Modifier.size(16.dp))
+                ExerciseFullCard(it)
+            }
         }
         item {
             Spacer(Modifier.size(16.dp))
@@ -64,7 +65,10 @@ fun TrainingSummaryScreen(
 fun TrainingSummaryScreenPreview() {
     TrainersAppTheme {
         Scaffold { innerPadding ->
-            TrainingSummaryScreen(modifier = Modifier.padding(innerPadding))
+            TrainingSummaryScreen(
+                training = Training("Today", "For Preview"),
+                modifier = Modifier.padding(innerPadding)
+            )
         }
     }
 }

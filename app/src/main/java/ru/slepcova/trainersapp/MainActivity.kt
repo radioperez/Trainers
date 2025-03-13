@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-enum class TrainerScreen() {
+enum class TrainerScreen {
     Start,
     History,
     TrainingFreestyle,
@@ -69,6 +69,7 @@ fun TrainersApp(
                 }
                 composable(route = TrainerScreen.History.name) {
                     HistoryScreen(
+                        trainingList = viewModel.allTraining,
                         toSummary = { training ->
                             viewModel.setOpenedTraining(training)
                             navController.navigate(TrainerScreen.TrainingSummary.name)
@@ -83,8 +84,7 @@ fun TrainersApp(
                 }
                 composable(route = TrainerScreen.TrainingSummary.name) {
                     TrainingSummaryScreen(
-                        name = uiState.openedTraining.first,
-                        date = uiState.openedTraining.second
+                        uiState.openedTraining
                     )
                 }
             }
